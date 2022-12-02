@@ -7,9 +7,10 @@ import (
 )
 
 type Response struct {
-	AsHTML func(int, string)
-	AsJSON func(int, interface{})
-	Write  func(string)
+	AsHTML   func(int, string)
+	AsJSON   func(int, interface{})
+	AsStatic func(int, string)
+	Write    func(string)
 }
 
 type Context struct {

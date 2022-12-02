@@ -35,6 +35,11 @@ func (s *Server) RouteGet(path string, handler func(c *Context)) {
 	routeGenerator(http.MethodGet, path, handler)
 }
 
+func (s *Server) RouteStatic(path string, staticFilesPath string) {
+	handler := http.StripPrefix(path+"/", http.FileServer(http.Dir(staticFilesPath)))
+	http.Handle(path+"/", handler)
+}
+
 func (s *Server) RoutePost(path string, handler func(c *Context)) {
 	routeGenerator(http.MethodPost, path, handler)
 }
